@@ -1,0 +1,10 @@
+package co.edu.ue.service;
+
+import java.util.Date;
+import java.util.List;
+
+import co.edu.ue.entity.Fotografias;
+
+public interface IFotografiasService {
+
+}

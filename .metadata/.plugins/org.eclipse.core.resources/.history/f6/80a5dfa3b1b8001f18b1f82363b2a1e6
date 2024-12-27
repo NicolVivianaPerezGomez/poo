@@ -1,0 +1,38 @@
+package co.edu.ue.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+public class MatchesService implements IMatchesService {
+
+	@Autowired
+    IMatchesDao dao;
+
+    public MatchesService(IMatchesDao matchesDao) {
+        this.matchesDao = matchesDao;
+    }
+
+    @Override
+    public Matches guardarMatch(Matches match) {
+        return matchesDao.guardarMatch(match);
+    }
+
+    @Override
+    public Matches actualiarMatch(Matches match) {
+        return matchesDao.actualiarMatch(match);
+    }
+
+    @Override
+    public Matches eliminarMatch(int matId) {
+        return matchesDao.eliminarMatch(matId);
+    }
+
+    @Override
+    public Matches encontrarporId(int matId) {
+        return matchesDao.encontrarporId(matId);
+    }
+
+    @Override
+    public List<Matches> findAll() {
+        return matchesDao.findAll();
+    }
+}

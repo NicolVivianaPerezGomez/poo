@@ -1,0 +1,42 @@
+package co.edu.ue.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import co.edu.ue.dao.IFotografiasDao;
+import co.edu.ue.entity.Fotografias;
+
+@Service
+public class FotografiasService implements IFotografiasService {
+
+	@Autowired
+	private IFotografiasDao dao;
+
+	@Override
+	public Fotografias guardarFotografias(Fotografias fotografia) {
+		return dao.guardarFotografias(fotografia);
+	}
+
+	@Override
+	public Fotografias actualizarFotografias(Fotografias fotografia) {
+		return dao.actualizarFotografias(fotografia);
+	}
+
+	@Override
+	public Fotografias eliminarFotografias(Fotografias fotografia) {
+		return dao.eliminarFotografias(fotografia);
+	}
+
+	@Override
+	public Fotografias encontrarpoId(int fotId) {
+		return dao.encontrarpoId(fotId);
+	}
+
+	@Override
+	public List<Fotografias> findAll() {
+		return dao.findAll();
+	}
+
+}

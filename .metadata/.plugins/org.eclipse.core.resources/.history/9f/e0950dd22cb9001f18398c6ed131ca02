@@ -1,0 +1,20 @@
+package co.edu.ue.service;
+
+import java.util.List;
+
+import co.edu.ue.entity.Fotografias;
+
+public interface IFotografiasService {
+
+	// Metodo para crear el Crud
+	Fotografias guardarFotografias(Fotografias fotografia);
+
+	Fotografias actualizarFotografias(Fotografias fotografia);
+
+	Fotografias eliminarFotografias(Fotografias fotografia);
+
+	Fotografias encontrarpoId(int fotId);
+
+	// Consulta
+	List<Fotografias> findAll();
+}

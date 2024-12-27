@@ -1,0 +1,66 @@
+package co.edu.ue.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import co.edu.ue.entity.Fotografias;
+import co.edu.ue.service.IFotografiasService;
+
+@RestController
+@RequestMapping("Fotografias")
+public class FotografiasController {
+
+	@Autowired
+	private IFotografiasService FotografiasService;
+
+	@PostMapping
+	public ResponseEntity<Fotografias> guardarFotografias(@RequestBody Fotografias fotografia) {
+		Fotografias nuevaFotografia = FotografiasService.guardarFotografias(fotografia);
+		return ResponseEntity.status(HttpStatus.CREATED).body(nuevaFotografia);
+	}
+
+	@PutMapping("/{fotId}")
+	public ResponseEntity<Fotografias> actualizarFotografias(@PathVariable int fotId, @RequestBody Fotografias fotografia) {
+		Fotografias fotografiaExistente = FotografiasService.encontrarpoId(fotId);  // Verifica si existe el recurso
+		if (fotografiaExistente != null) {
+			fotografia.setFotId(fotId);  // Asegúra que el ID de la fotografía coincide
+			Fotografias actualizarFotografia = FotografiasService.actualizarFotografias(fotografia);
+			return ResponseEntity.ok(actualizarFotografia);
+		} else {
+			return ResponseEntity.notFound().build();
+		}
+	}
+
+	@DeleteMapping("/{fotId}")
+	public ResponseEntity<Void> eliminarFotografias(@PathVariable int fotId) {
+		Fotografias fotografiaExistente = FotografiasService.encontrarpoId(fotId);
+		if (fotografiaExistente != null) {
+			FotografiasService.eliminarFotografias(fotografiaExistente);
+			return ResponseEntity.noContent().build();
+		} else {
+			return ResponseEntity.notFound().build();
+		}
+	}
+
+	@GetMapping("/{fotId}")
+	public ResponseEntity<Fotografias> encontrarPorId(@PathVariable int fotId) {
+		Fotografias fotografia = FotografiasService.encontrarpoId(fotId);
+		return fotografia != null ? ResponseEntity.ok(fotografia) : ResponseEntity.notFound().build();
+	}
+
+	@GetMapping
+	public ResponseEntity<List<Fotografias>> findAll() {
+		return ResponseEntity.ok(FotografiasService.findAll());
+	}
+}

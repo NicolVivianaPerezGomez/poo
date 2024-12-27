@@ -1,0 +1,56 @@
+package co.edu.ue.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import co.edu.ue.entity.Fotografias;
+import co.edu.ue.service.IFotografiasService;
+
+@RestController
+@RequestMapping("Fotografias")
+public class FotografiasController {
+
+	@Autowired // Se cablea la capa interface Fotografias service para obtener el CRUD y
+				// consultas
+	private IFotografiasService service;
+
+	@PostMapping
+	public ResponseEntity<Fotografias> guardarFotografias(@RequestBody Fotografias fotografia) {
+		Fotografias nuevaFotografia = service.guardarFotografias(fotografia);
+		return ResponseEntity.status(HttpStatus.CREATED).body(nuevaFotografia);
+	}
+
+	@PutMapping
+	public ResponseEntity<Fotografias> actualizarFotografias(@RequestBody Fotografias fotografia) {
+		Fotografias actualizarFotografia = service.actualizarFotografias(fotografia);
+		return ResponseEntity.ok(actualizarFotografia);
+	}
+
+	@DeleteMapping
+	public ResponseEntity<Void> eliminarFotografias(@RequestBody Fotografias fotografia) {
+		service.eliminarFotografias(fotografia);
+		return ResponseEntity.noContent().build();
+	}
+
+	@GetMapping("/{fotId}")
+	public ResponseEntity<Fotografias> encontrarpoId(@PathVariable int fotId) {
+		Fotografias fotografia = service.encontrarpoId(fotId);
+		return fotografia != null ? ResponseEntity.ok(fotografia) : ResponseEntity.notFound().build();
+	}
+
+	@GetMapping
+	public ResponseEntity<List<Fotografias>> findAll() {
+		return ResponseEntity.ok(service.findAll());
+	}
+}

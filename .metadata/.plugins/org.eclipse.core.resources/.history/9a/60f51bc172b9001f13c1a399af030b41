@@ -1,0 +1,45 @@
+package co.edu.ue.service;
+
+import java.util.List;
+
+import co.edu.ue.dao.ICategoriasMatchDao;
+import co.edu.ue.entity.CategoriasMatch;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
+public class CategoriasMatchService implements ICategoriasMatchService {
+
+	    @Autowired
+	    private ICategoriasMatchDao categoriasMatchDao;
+
+	    @Override
+	    public CategoriasMatch getById(int catMatId) {
+	        return categoriasMatchDao.encontrarPorId(catMatId);
+	    }
+
+	    @Override
+	    public List<CategoriasMatch> getAll() {
+	        return categoriasMatchDao.findAll();
+	    }
+
+	    @Override
+	    public CategoriasMatch create(CategoriasMatch categoriasMatch) {
+	        return categoriasMatchDao.guardarCategoria(categoriasMatch);
+	    }
+
+	    @Override
+	    public CategoriasMatch modify(CategoriasMatch categoriasMatch) {
+	        return categoriasMatchDao.actualizarCategoria(categoriasMatch);
+	    }
+
+	    @Override
+	    public CategoriasMatch remove(int catMatId) {
+	        return categoriasMatchDao.eliminarCategoria(catMatId);
+	    }
+
+		@Override
+		public CategoriasMatch eliminarCategoria(int catMatId) {
+			return ;
+		}
+}

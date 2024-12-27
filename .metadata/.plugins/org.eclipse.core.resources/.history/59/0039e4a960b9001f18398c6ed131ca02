@@ -1,0 +1,14 @@
+package co.edu.ue.jpa;
+
+import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import co.edu.ue.entity.Fotografias;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+public interface IFotografiasJpa extends JpaRepository<Fotografias, Integer> {
+    // Puedes agregar métodos personalizados aquí si es necesario
+}

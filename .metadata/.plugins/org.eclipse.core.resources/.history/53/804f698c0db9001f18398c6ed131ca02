@@ -1,0 +1,14 @@
+package co.edu.ue.jpa;
+
+import java.util.List;
+
+import co.edu.ue.entity.CategoriasMatch;
+
+public interface ICategoriasMatchJpa {
+
+	CategoriasMatch save(CategoriasMatch categoria);
+
+	List<CategoriasMatch> findAll();
+
+	Object findById(int catMatId);
+}

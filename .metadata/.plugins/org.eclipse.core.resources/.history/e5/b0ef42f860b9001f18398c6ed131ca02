@@ -1,0 +1,17 @@
+package co.edu.ue.jpa;
+
+import java.util.Date;
+import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import co.edu.ue.entity.Fotografias;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+public interface IFotografiasJpa extends JpaRepository<Fotografias, Integer> {
+
+	Fotografias save(Date fot_fechaSubida);
+
+}

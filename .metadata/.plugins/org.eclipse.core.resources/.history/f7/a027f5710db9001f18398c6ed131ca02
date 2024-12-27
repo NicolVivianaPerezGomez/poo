@@ -1,0 +1,9 @@
+package co.edu.ue.jpa;
+
+import co.edu.ue.entity.CategoriasMatch;
+
+public interface ICategoriasMatchJpa {
+
+	CategoriasMatch save(CategoriasMatch categoria);
+
+}

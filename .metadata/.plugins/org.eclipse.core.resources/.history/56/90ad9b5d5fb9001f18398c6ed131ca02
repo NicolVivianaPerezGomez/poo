@@ -1,0 +1,12 @@
+package co.edu.ue.dao;
+
+import java.util.Date;
+import java.util.List;
+
+import co.edu.ue.entity.Fotografias;
+
+public interface IFotografiasDao {
+	
+	
+
+}

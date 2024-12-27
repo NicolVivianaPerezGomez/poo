@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="NewWizardAction">
+		<item key="NewWizardSelectionPage.STORE_SELECTED_ID" value="org.springsource.ide.eclipse.commons.gettingstarted.wizard.boot.NewSpringBootWizard"/>
+		<list key="NewWizardSelectionPage.STORE_EXPANDED_CATEGORIES_ID">
+			<item value="org.springsource.ide.eclipse.boot.wizards.category"/>
+		</list>
+		<section name="NewWizard.dialogBounds">
+			<item key="DIALOG_X_ORIGIN" value="0"/>
+			<item key="DIALOG_Y_ORIGIN" value="0"/>
+			<item key="DIALOG_WIDTH" value="525"/>
+			<item key="DIALOG_HEIGHT" value="500"/>
+			<item key="DIALOG_FONT_NAME" value="1|Segoe UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI"/>
+		</section>
+	</section>
+	<section name="SmartImportWizard">
+		<item key="SmartImportRootWizardPage.STORE_HIDE_ALREADY_OPEN" value="false"/>
+		<item key="SmartImportRootWizardPage.STORE_CLOSE_IMPORTED" value="false"/>
+		<item key="SmartImportRootWizardPage.STORE_NESTED_PROJECTS" value="true"/>
+		<item key="SmartImportRootWizardPage.STORE_CONFIGURE_NATURES" value="true"/>
+		<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
+			<item value="C:\Users\bitri\OneDrive\Documentos\GitHub\AppNearby"/>
+			<item value="C:\Users\bitri\Downloads\AppNearby"/>
+			<item value="C:\Users\bitri\OneDrive\Escritorio\AppCitasBorrador (2)\AppCitasBorrador"/>
+			<item value="C:\Users\bitri\OneDrive\Escritorio\10-UserDataBaseSecurity\10-UserDataBaseSecurity"/>
+			<item value="C:\Users\bitri\OneDrive\Documentos\10-UserDataBaseSecurity\10-UserDataBaseSecurity"/>
+			<item value="C:\Users\bitri\OneDrive\Documentos\10-UserDataBaseSecurity"/>
+			<item value="C:\Users\bitri\OneDrive\Escritorio\10-UserDataBaseSecurity"/>
+			<item value="C:\Users\bitri\OneDrive\Escritorio\AppCitasBorrador (2)"/>
+			<item value="C:\Users\bitri\OneDrive\Documentos\GitHub\Proyecto-6.1-POO-II"/>
+			<item value="C:\Users\bitri\OneDrive\Escritorio\ColombiaDepartaments"/>
+			<item value="C:\Users\bitri\OneDrive\Escritorio\8-UsersDataBase\8-UsersDataBase"/>
+			<item value="C:\Users\bitri\OneDrive\Escritorio\8-UsersDataBase"/>
+			<item value="C:\Users\bitri\OneDrive\Escritorio\AppCitasBorrador"/>
+			<item value="C:\Users\bitri\OneDrive\Escritorio\POO.zip"/>
+			<item value="C:\Users\bitri\Downloads\Backend (1).zip"/>
+			<item value="C:\Users\bitri\Downloads\Backend.zip"/>
+		</list>
+		<section name="SmartImportWizard.dialogBounds">
+			<item key="DIALOG_X_ORIGIN" value="526"/>
+			<item key="DIALOG_Y_ORIGIN" value="105"/>
+			<item key="DIALOG_WIDTH" value="979"/>
+			<item key="DIALOG_HEIGHT" value="691"/>
+			<item key="DIALOG_FONT_NAME" value="1|Segoe UI|10.5|0|WINDOWS|1|-14|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI"/>
+		</section>
+	</section>
+	<section name="CleanDialogSettings">
+		<item key="TOGGLE_SELECTED" value="false"/>
+		<item key="DIALOG_WIDTH" value="500"/>
+		<item key="DIALOG_HEIGHT" value="389"/>
+		<item key="DIALOG_FONT_NAME" value="1|Segoe UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI"/>
+	</section>
+</section>

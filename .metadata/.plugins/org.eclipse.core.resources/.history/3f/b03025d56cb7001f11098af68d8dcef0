@@ -1,0 +1,107 @@
+package co.edu.ue.entity;
+
+import java.io.Serializable;
+import jakarta.persistence.*;
+import java.util.List;
+
+
+/**
+ * The persistent class for the perfiles database table.
+ * 
+ */
+@Entity
+@Table(name="perfiles")
+@NamedQuery(name="Perfile.findAll", query="SELECT p FROM Perfile p")
+public class Perfile implements Serializable {
+	private static final long serialVersionUID = 1L;
+
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="per_id")
+	private int perId;
+
+	@Lob
+	@Column(name="per_descripcion")
+	private String perDescripcion;
+
+	@Column(name="per_nombre")
+	private String perNombre;
+
+	@Column(name="usuarios_usu_id")
+	private int usuariosUsuId;
+
+	//bi-directional many-to-one association to Fotografia
+	@OneToMany(mappedBy="perfile")
+	private List<Fotografia> fotografias;
+
+	//bi-directional many-to-one association to Usuario
+	@ManyToOne
+	@JoinColumn(name="usuarios_usu_id1")
+	private Usuario usuario;
+
+	public Perfile() {
+	}
+
+	public int getPerId() {
+		return this.perId;
+	}
+
+	public void setPerId(int perId) {
+		this.perId = perId;
+	}
+
+	public String getPerDescripcion() {
+		return this.perDescripcion;
+	}
+
+	public void setPerDescripcion(String perDescripcion) {
+		this.perDescripcion = perDescripcion;
+	}
+
+	public String getPerNombre() {
+		return this.perNombre;
+	}
+
+	public void setPerNombre(String perNombre) {
+		this.perNombre = perNombre;
+	}
+
+	public int getUsuariosUsuId() {
+		return this.usuariosUsuId;
+	}
+
+	public void setUsuariosUsuId(int usuariosUsuId) {
+		this.usuariosUsuId = usuariosUsuId;
+	}
+
+	public List<Fotografia> getFotografias() {
+		return this.fotografias;
+	}
+
+	public void setFotografias(List<Fotografia> fotografias) {
+		this.fotografias = fotografias;
+	}
+
+	public Fotografia addFotografia(Fotografia fotografia) {
+		getFotografias().add(fotografia);
+		fotografia.setPerfile(this);
+
+		return fotografia;
+	}
+
+	public Fotografia removeFotografia(Fotografia fotografia) {
+		getFotografias().remove(fotografia);
+		fotografia.setPerfile(null);
+
+		return fotografia;
+	}
+
+	public Usuario getUsuario() {
+		return this.usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+
+}

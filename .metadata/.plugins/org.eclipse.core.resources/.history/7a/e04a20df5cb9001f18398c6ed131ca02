@@ -1,0 +1,22 @@
+package co.edu.ue.dao;
+
+import java.util.Date;
+import java.util.List;
+
+import co.edu.ue.entity.Fotografias;
+
+public interface IFotografiasDao {
+	
+	//CRUD MEETODO
+	Fotografias guardarFotografias(Date fot_fechaSubida);
+
+    Fotografias actualizarFotografias(Fotografias fotografia);
+
+    Fotografias eliminarFotografiasporId(int fotId);
+    
+    //CONSULTAS
+    
+    List<Fotografias> findAll();
+    Fotografias encontrarpoId(int fotId);
+
+}

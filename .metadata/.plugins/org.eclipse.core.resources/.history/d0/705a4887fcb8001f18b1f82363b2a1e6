@@ -1,0 +1,57 @@
+package co.edu.ue.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import co.edu.ue.dao.ICitasDao;
+import co.edu.ue.entity.Citas;
+
+import java.util.Date;
+import java.util.List;
+
+@Service
+public class CitasService implements ICitasService {
+	
+	 @Autowired
+    ICitasDao citasDao;
+
+    public CitasService(ICitasDao citasDao) {
+        this.citasDao = citasDao;
+    }
+
+    @Override
+    public List<Citas> listaCompleta() {
+        return citasDao.listaCompleta();
+    }
+
+    @Override
+    public Citas guardarCitas(Citas cita) {
+        return citasDao.guardarCitas(cita);
+    }
+
+    @Override
+    public Citas actualizarCitas(Citas cita) {
+        return citasDao.actualizarCitas(cita);
+    }
+
+    @Override
+    public Citas eliminarCitas(int citId) {
+        return citasDao.eliminarCitas(citId);
+    }
+
+    @Override
+    public Citas busquedaPorId(int citId) {
+        return citasDao.busquedaPorId(citId);
+    }
+
+    @Override
+    public Citas busquedaPorFecha(Date citFecha) {
+        return citasDao.busquedaPorFecha(citFecha);
+    }
+
+    @Override
+    public Citas busquedaPorCitEstado(String citEstado) {
+        return citasDao.busquedaPorCitEstado(citEstado);
+    }
+
+}

@@ -1,0 +1,17 @@
+package co.edu.ue.dao;
+
+import java.util.List;
+
+import co.edu.ue.entity.Matches;
+
+public interface IMatchesDao { 
+	
+	//METODOS CRUD
+	  Matches findById(int id);
+	  
+	  //CONSULTAS 
+	    List<Matches> findAll();
+	    Matches guardarMatch(Matches match);
+	    void update(Matches match);
+		void delete(int id);
+	}

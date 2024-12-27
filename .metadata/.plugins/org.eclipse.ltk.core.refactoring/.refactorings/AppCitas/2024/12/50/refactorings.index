@@ -1,0 +1,11 @@
+1733801317340	Rename type 'Perfile'
+1733867086204	Delete element
+1733868323658	Delete element
+1733868407726	Rename type 'IPerfile'
+1733875325946	Rename type 'Usuario'
+1733875359767	Rename type 'UsuarioDao'
+1733875373600	Rename type 'IUsuarioDao'
+1733875390561	Rename type 'UsuarioController'
+1733875414327	Rename type 'IUsuarioService'
+1733875428805	Rename type 'UsuarioService'
+1733878857026	Rename type 'IUsuarioJpa'

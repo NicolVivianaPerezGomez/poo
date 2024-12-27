@@ -1,0 +1,47 @@
+package co.edu.ue.dao;
+
+public class CategoriasMatchDao {
+	import javax.persistence.EntityManager;
+	import javax.persistence.PersistenceContext;
+	import javax.transaction.Transactional;
+	import java.util.List;
+
+	public class CategoriasMatchDao implements ICategoriasMatchDao {
+
+	    @PersistenceContext
+	    private EntityManager entityManager;
+
+	    @Override
+	    @Transactional
+	    public CategoriasMatch guardarCategoria(CategoriasMatch categoria) {
+	        entityManager.persist(categoria);
+	        return categoria; // Retorna la entidad guardada
+	    }
+
+	    @Override
+	    @Transactional
+	    public CategoriasMatch actualizarCategoria(CategoriasMatch categoria) {
+	        return entityManager.merge(categoria); // Retorna la entidad actualizada
+	    }
+
+	    @Override
+	    @Transactional
+	    public CategoriasMatch eliminarCategoria(int catMatId) {
+	        CategoriasMatch categoria = encontrarPorId(catMatId);
+	        if (categoria != null) {
+	            entityManager.remove(categoria);
+	        }
+	        return categoria; // Retorna la entidad eliminada o null si no se encontró
+	    }
+
+	    @Override
+	    public List<CategoriasMatch> findAll() {
+	        return entityManager.createNamedQuery("CategoriasMatch.findAll", CategoriasMatch.class).getResultList();
+	    }
+
+	    @Override
+	    public CategoriasMatch encontrarPorId(int catMatId) {
+	        return entityManager.find(CategoriasMatch.class, catMatId);
+	    }
+}
+

@@ -1,0 +1,44 @@
+package co.edu.ue.dao;
+import org.springframework.beans.factory.annotation.Autowired;
+import co.edu.ue.entity.CategoriasMatch;
+import co.edu.ue.jpa.ICategoriasMatchJpa;
+import java.util.List;
+
+	public class CategoriasMatchDao implements ICategoriasMatchDao {
+
+	    @Autowired
+	    ICategoriasMatchJpa jpa;
+
+		@Override
+		public CategoriasMatch guardarCategoria(CategoriasMatch categoria) {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public CategoriasMatch actualizarCategoria(CategoriasMatch categoria) {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public CategoriasMatch eliminarCategoria(int catMatId) {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public List<CategoriasMatch> findAll() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public CategoriasMatch encontrarPorId(int catMatId) {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+}
+	
+

@@ -1,0 +1,14 @@
+package co.edu.ue.jpa;
+
+import java.util.Date;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import co.edu.ue.entity.Citas;
+
+public interface ICitasJpa extends JpaRepository<Citas, Integer> {
+
+	Citas findById(Date citFecha);
+
+	Citas findById(String citEstado);
+}

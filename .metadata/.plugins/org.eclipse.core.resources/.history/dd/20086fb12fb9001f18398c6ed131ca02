@@ -1,0 +1,74 @@
+package co.edu.ue.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import co.edu.ue.entity.Fotografias;
+import co.edu.ue.service.IFotografiasService;
+
+@RestController
+@RequestMapping("Fotografias")
+public class FotografiasController {
+
+	@Autowired
+	private IFotografiasService service;
+	
+	//AGREGO UN FOTO
+
+	@PostMapping
+	public ResponseEntity<Fotografias> guardarFotografias(@RequestBody Fotografias fotografia) {
+		Fotografias nuevaFotografia = service.guardarFotografias(fotografia);
+		return ResponseEntity.status(HttpStatus.CREATED).body(nuevaFotografia);
+	}
+	
+	//ACTUALIZA UNA FOTO
+     
+	@PutMapping("/{fotId}")
+	public ResponseEntity<Fotografias> actualizarFotografias(@PathVariable int fotId, @RequestBody Fotografias fotografia) {
+		Fotografias fotografiaExistente = service.encontrarpoId(fotId); 
+		if (fotografiaExistente != null) {
+			fotografia.setFotId(fotId);  // 
+			Fotografias actualizarFotografia = service.actualizarFotografias(fotografia);
+			return ResponseEntity.ok(actualizarFotografia);
+		} else {
+			return ResponseEntity.notFound().build();
+		}
+	}
+
+	@DeleteMapping("/{fotId}")
+	public ResponseEntity<Void> eliminarFotografiasporId(@PathVariable int fotId) {
+		Fotografias fotografiaExistente = service.encontrarpoId(fotId);
+		if (fotografiaExistente != null) {
+			service.eliminarFotografias(fotografiaExistente);
+			return ResponseEntity.noContent().build();
+		} else {
+			return ResponseEntity.notFound().build();
+		}
+	}
+
+	//LLAMO LOS ID QUE TENGO
+	
+	@GetMapping("/{fotId}")
+	public ResponseEntity<Fotografias> encontrarPorId(@PathVariable int fotId) {
+		Fotografias fotografia = service.encontrarpoId(fotId);
+		return fotografia != null ? ResponseEntity.ok(fotografia) : ResponseEntity.notFound().build();
+	}
+	
+	//MUESTRO TODOS
+
+	@GetMapping
+	public ResponseEntity<List<Fotografias>> findAll() {
+		return ResponseEntity.ok(service.findAll());
+	}
+}

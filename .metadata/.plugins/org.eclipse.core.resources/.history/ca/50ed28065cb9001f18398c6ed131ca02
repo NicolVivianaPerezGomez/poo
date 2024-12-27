@@ -1,0 +1,25 @@
+package co.edu.ue.service;
+
+import java.util.Date;
+import java.util.List;
+
+import co.edu.ue.entity.Fotografias;
+
+public interface IFotografiasService {
+
+	// CRUD
+	Fotografias guardarFotografias(Date fot_fechaSubida);
+
+	Fotografias actualizarFotografias(Fotografias fotografia);
+
+	Fotografias eliminarFotografias(Fotografias fotografia);
+
+	Fotografias encontrarpoId(int fotId);
+
+	// COSULTA
+	List<Fotografias> findAll();
+
+	Fotografias eliminarFotografiasporId(int fotId);
+
+	Fotografias guardarFotografias(Fotografias fotografia);
+}

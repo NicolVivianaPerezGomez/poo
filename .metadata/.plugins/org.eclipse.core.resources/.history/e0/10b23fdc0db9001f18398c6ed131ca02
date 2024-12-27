@@ -1,0 +1,10 @@
+package co.edu.ue.service;
+
+public class CategoriasMatchService {
+	CategoriasMatch getById(int id);
+    List<CategoriasMatch> getAll();
+    CategoriasMatch create(CategoriasMatch categoriasMatch);
+    CategoriasMatch modify(CategoriasMatch categoriasMatch);
+    CategoriasMatch remove(int id);
+
+}

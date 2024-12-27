@@ -1,0 +1,70 @@
+package co.edu.ue.service;
+
+import java.util.Date;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import co.edu.ue.dao.IFotografiasDao;
+import co.edu.ue.entity.Fotografias;
+
+@Service
+public class FotografiasService implements IFotografiasService {
+
+	@Autowired
+	private IFotografiasDao dao;
+
+	@Override
+	public Fotografias actualizarFotografias(Fotografias fotografia) {
+		return dao.actualizarFotografias(fotografia);
+	}
+
+	@Override
+	public Fotografias encontrarpoId(int fotId) {
+		return dao.encontrarpoId(fotId);
+	}
+
+	@Override
+	public List<Fotografias> findAll() {
+		return dao.findAll();
+	}
+
+	@Override
+	public Fotografias eliminarFotografiasporId(int fotId) {		
+		return dao.eliminarFotografiasporId(fotId);
+	}
+
+	@Override
+	public boolean eliminarFotografias(int fotId) {
+		return eliminarFotografias(fotId);
+	}
+
+	@Override
+	public Fotografias guardarFotografias(Date fot_fechaSubida) {
+		return dao.guardarFotografias(fot_fechaSubida);
+	}
+
+	@Override
+	public Fotografias guardarFotografias(Fotografias fotografia) {
+		return null;
+	}
+
+	public Fotografias actualizarFotografia(int fotId, Fotografias fotografiaActualizada) {
+		return dao.actualizarFotografias(fotografiaActualizada);
+	}
+
+	public List<Fotografias> obtenerTodasLasFotografias() {
+		return dao.findAll();
+	}
+
+	@Override
+	public Fotografias eliminarFotografias(Fotografias fotografia) {
+		return null;
+	}
+
+	public Fotografias obtenerFotografiaPorId(int fotId) {
+		return null;
+	}
+
+}

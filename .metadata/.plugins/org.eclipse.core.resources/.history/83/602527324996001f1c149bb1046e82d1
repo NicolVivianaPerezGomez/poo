@@ -1,0 +1,58 @@
+package co.edu.ue.controller;
+
+import java.util.List;
+
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+import co.edu.ue.entity.User;
+import co.edu.ue.repository.UserData;
+
+@RestController
+@RequestMapping(value="\api")
+public class UserController {
+	
+	//fuente de datos a traves de instanciación
+	UserData data = new UserData();
+	
+	//Retorna todos los usuarios
+	@GetMapping(value="users")
+	public List<User> getAllUsers(){
+		return data.getListUser();
+	}
+	
+	
+	//Retorna por correo electronico
+	@GetMapping(value="user-mail")
+	public User getUserEmail(@RequestParam("email")String correo) {
+		return data.getUserByMail(correo);
+	}
+	
+	//Retorna usuario por Id
+	@GetMapping(value="user-id")
+	public User getUserId(@RequestParam("id") Integer id) {
+		return data.getUserById(id);
+	}
+	
+	//Agregar un usuario
+	
+	@PostMapping (value="user")
+	public List<User> postUser(@RequestBody User user) {
+		return data.postUser(user);
+	}
+	
+	//Eliminar
+	
+	@DeleteMapping (value="user")
+	public List<User> deleteUser(@RequestBody Integer id) {
+		return data.deleteUser(id);
+	}
+	
+	//Actualizar
+	
+	
+}

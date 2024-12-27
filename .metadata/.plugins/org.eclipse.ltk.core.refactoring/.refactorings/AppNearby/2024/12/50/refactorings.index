@@ -1,0 +1,8 @@
+1733893456938	Rename type 'Usuariod'
+1733894558927	Rename type 'UsuarioDao'
+1733894578286	Rename compilation unit 'IUsuarioDao.java'
+1733895246192	Delete element
+1733895339243	Rename compilation unit 'Datoservice.java'
+1733895442037	Rename compilation unit 'Usuarioservice.java'
+1733955476322	Delete element
+1734010046977	Encapsulate field 'EMAIL_REGEX, ...'

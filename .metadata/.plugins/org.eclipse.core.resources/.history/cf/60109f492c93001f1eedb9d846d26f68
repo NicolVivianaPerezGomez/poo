@@ -1,0 +1,33 @@
+package co.edu.ue.service;
+
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
+import co.edu.ue.entity.user;
+
+@Service
+public class UserService implements IUserService{
+
+	@Autowired
+	private UserData data;
+	@Override
+	public List<user> getAllUser() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<user> getAllUserChangeId() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public user getByMail(String email) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+
+}

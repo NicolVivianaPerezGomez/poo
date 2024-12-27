@@ -1,0 +1,11 @@
+package co.edu.ue.jpa;
+
+import co.edu.ue.entity.Matches;
+
+public interface IMatchesJpa {
+
+	Matches save(Matches match);
+
+	Matches update(Matches match);
+	
+}

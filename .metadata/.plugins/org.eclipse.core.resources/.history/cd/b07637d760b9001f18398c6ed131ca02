@@ -1,0 +1,46 @@
+package co.edu.ue.dao;
+
+import java.util.Date;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import co.edu.ue.entity.Fotografias;
+import co.edu.ue.jpa.IFotografiasJpa;
+
+@Repository
+public class FotografiasDao implements IFotografiasDao {
+
+    @Autowired
+     IFotografiasDao dao;
+
+    @Override
+    public Fotografias findById(int id) {
+        return dao.find(Fotografias.class, id);
+    }
+
+    @Override
+    public List<Fotografias> findAll() {
+        return dao.createNamedQuery("Fotografias.findAll", Fotografias.class).getResultList();
+    }
+
+    @Override
+    public Fotografias guardarfotografias(Fotografias fotografia) {
+        if (fotografia.getFotId() == 0) {
+           dao.persist(fotografia);
+        } else {
+            fotografia = dao.merge(fotografia);
+        }
+        return fotografia;
+    }
+
+    @Override
+    public Fotografias eliminarporelId(int id) {
+        Fotografias fotografia = findById(id);
+        if (fotografia != null) {
+           dao.remove(fotografia);
+        }
+        return fotografia;
+    }
+}

@@ -1,0 +1,76 @@
+package co.edu.ue.security;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
+import org.springframework.security.config.Customizer;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.security.web.SecurityFilterChain;
+
+import java.util.List;
+
+@EnableWebSecurity
+@Configuration
+public class SecurityConfig {
+
+	
+	@Bean  //ME PERMITE VOLVERLO O INYECTARLO COMO UN OBJETO
+	public InMemoryUserDetailsManager usermanager() {
+		List<UserDetails> users = List.of(
+				User
+				.withUsername("client")
+				.password("{noop}1234")
+				.roles("USERS")
+			    .build(),
+			    User
+			    .withUsername("admin")
+			    .password("{noop}1234")
+			    .roles("ADMINS")
+			    .build()
+			    );
+				
+		return new InMemoryUserDetailsManager(users);
+	}
+	
+	@Bean
+	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
+	    http.csrf(cus->cus.disable())
+	    .authorizeHttpRequests(aut->
+	        aut.requestMatchers(HttpMethod.POST,"/usuarios").hasAnyRole("ADMINS")
+	        .requestMatchers(HttpMethod.GET,"/usuarios").authenticated()
+	        .requestMatchers(HttpMethod.GET,"/usuarios/{id}").authenticated()
+	        .requestMatchers(HttpMethod.GET,"/usuarios/email/{email}").authenticated()
+	        .requestMatchers(HttpMethod.PUT,"/usuarios").authenticated()
+	        .requestMatchers(HttpMethod.DELETE,"/usuarios/{id}").hasAnyRole("ADMINS")
+	        .requestMatchers(HttpMethod.POST,"/perfiles").authenticated()
+            .requestMatchers(HttpMethod.GET,"/perfiles").authenticated()
+            .requestMatchers(HttpMethod.GET,"/perfiles/{id}").authenticated()
+            .requestMatchers(HttpMethod.PUT,"/perfiles").authenticated()
+            .requestMatchers(HttpMethod.DELETE,"/perfiles/{id}").hasAnyRole("ADMINS")
+            .requestMatchers(HttpMethod.GET, "/matches").authenticated()
+            .requestMatchers(HttpMethod.GET, "/matches/{id}").authenticated()
+            .requestMatchers(HttpMethod.PUT, "/matches").authenticated()
+            .requestMatchers(HttpMethod.DELETE, "/matches/{id}").hasAnyRole("ADMINS")
+            .requestMatchers(HttpMethod.GET, "/citas").permitAll()
+            .requestMatchers(HttpMethod.GET, "/citas/{id}").permitAll()
+            .requestMatchers(HttpMethod.POST, "/citas").hasAnyRole("USER", "ADMIN")
+            .requestMatchers(HttpMethod.PUT, "/citas/{id}").hasAnyRole("USER", "ADMIN")
+            .requestMatchers(HttpMethod.DELETE, "/citas/{id}").hasRole("ADMIN")
+            .requestMatchers(HttpMethod.GET, "/citas/fecha/{fecha}").permitAll()
+            .requestMatchers(HttpMethod.GET, "/citas/estado/{estado}").permitAll()
+            .requestMatchers(HttpMethod.POST, "categorias-match").hasAnyRole("ADMIN")
+            .requestMatchers(HttpMethod.GET, "categorias-match").authenticated()
+            .requestMatchers(HttpMethod.GET, "categorias-match/{id}").authenticated()
+            .requestMatchers(HttpMethod.PUT, "categorias-match").hasAnyRole("ADMIN", "USER")
+            .requestMatchers(HttpMethod.DELETE, "categorias-match/{id}").hasRole("ADMIN")
+	    )
+	    .httpBasic(Customizer.withDefaults());
+	    return http.build();
+	}
+
+
+}

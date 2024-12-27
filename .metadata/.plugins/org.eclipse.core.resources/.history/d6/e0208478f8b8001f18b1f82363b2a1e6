@@ -1,0 +1,20 @@
+package co.edu.ue.dao;
+
+import java.util.Date;
+import java.util.List;
+
+import co.edu.ue.entity.Citas;
+
+public interface ICitasDao {
+	
+	//CRUDS
+	List<Citas>guardarCitas(Citas cita);
+	Citas actualizarCitas(Citas cita);
+    Citas eliminarCitas(int citId);
+	
+    //CONSULTAS
+	List<Citas> listaCompleta();
+    Citas busquedaporId(int id);
+    Citas busquedaporFecha(Date citFecha);
+    Citas busquedaporCitEstado(String citEstado);
+}
